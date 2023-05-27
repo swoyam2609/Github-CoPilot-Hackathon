@@ -25,7 +25,8 @@ def get_wind_direction(degree):
         if lower <= degree < upper:
             return direction
 
-apikey = "b6bd5446692494490688ce6b30036430"
+# apikey = "b6bd5446692494490688ce6b30036430"
+apikey = input("Enter your API Key:")
 
 def currentData(city):
     url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(
