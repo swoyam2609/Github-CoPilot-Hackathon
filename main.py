@@ -67,17 +67,4 @@ cityName = input("Enter the City name: ")
 
 print("\n")
 
-print("What kind of Forcast you want to recieve: ")
-print("1. Current Weather Data")
-print("2. Hourly Forecast for 4 Days")
-print("3. Daily forecast for 16 Days")
-print("4. Climatic Forecast for 30 Days")
-
-print("\n")
-
-a = int(input("Enter your input: "))
-
-print("\n")
-
-if (a == 1):
-    currentData(cityName)
+currentData(cityName)
