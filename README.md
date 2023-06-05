@@ -4,7 +4,7 @@ This is a Python project that provides current weather information for a given c
 ## Installation
 Clone the repository to your local machine using the following command:
 ```
-git clone https://github.com/swoyam2609/Github-CoPilot-Hackathon/git
+git clone https://github.com/swoyam2609/Github-CoPilot-Hackathon.git
 ```
 
 Install the required dependencies by running the following command:
