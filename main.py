@@ -1,5 +1,5 @@
-import pandas as pd
 import requests
+import json
 
 wind_directions = {
     'N': (348.75, 11.25),
@@ -20,21 +20,29 @@ wind_directions = {
     'NNW': (326.25, 348.75)
 }
 
-
-def get_wind_direction(degree):
+def getWindDirection(degree):
     for direction, (lower, upper) in wind_directions.items():
         if lower <= degree < upper:
             return direction
+        
+apiKey = input("Enter your API Key: ")
 
+def getCurrentWeather(cityName):
+    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(cityName, 'metric', apiKey)
+    response = requests.get(url)
 
-apikey = input("Enter your API Key:")
-
-
-def currentData(city):
-    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(
-        city, 'metric', apikey)
-    resp = requests.get(url)
-    result = resp.json()
+    # If response if 404, then city is not found
+    if response.status_code == 404:
+        print("City not found")
+        return
+    
+    # If response is 401, then API key is invalid
+    if response.status_code == 401:
+        print("Invalid API Key")
+        return
+    
+    # If response is 200, then city is found
+    result = response.json()
 
     weather = result['weather'][0]['main']
     currentTemp = result['main']['temp']
@@ -44,27 +52,17 @@ def currentData(city):
     pressure = result['main']['pressure']
     humidity = result['main']['humidity']
     windSpeed = result['wind']['speed']
-    windDirection = get_wind_direction(result['wind']['deg'])
+    windDirection = getWindDirection(result['wind']['deg'])
 
-    print("The current weather in {} is: {}".format(city, weather))
-    print()
-    print("The current temperature is: {}".format(
-        u"{}\u00b0".format(currentTemp)))
+    print("The current weather in {} is: {}".format(cityName, weather))
+    print("The current temperature is: {}".format(u"{}\u00b0".format(currentTemp)))
     print("The temperature feels like: {}".format(u"{}\u00b0".format(feelTemp)))
-    print("The minimum temperature of the day is expected to be: {}".format(
-        u"{}\u00b0".format(minTemp)))
-    print("The maximum temperature of the day is expected to be: {}".format(
-        u"{}\u00b0".format(maxTemp)))
-    print()
-    print("The air pressure in {} is: ".format(city), pressure, "hPa")
-    print("The humidity in {} is: {}%".format(city, humidity))
-    print()
-    print("The Wind Speed and its direction is: {}m/s {}".format(windSpeed, windDirection))
-    print("\n")
+    print("The minimum temperature of the day is expected to be: {}".format(u"{}\u00b0".format(minTemp)))
+    print("The maximum temperature of the day is expected to be: {}".format(u"{}\u00b0".format(maxTemp)))
+    print("The air pressure in {} is: ".format(cityName), pressure, "hPa")
+    print("The humidity in {} is: {}%".format(cityName, humidity))
+    print("The wind speed in {} is: {} m/s".format(cityName, windSpeed))
+    print("The wind direction in {} is: {}".format(cityName, windDirection))
 
-
-cityName = input("Enter the City name: ")
-
-print("\n")
-
-currentData(cityName)
+cityName = input("Enter the name of the city: ")
+getCurrentWeather(cityName)
