@@ -1,33 +1,57 @@
-# Weather Data Script
+# Weather App
+This is a Python project that provides current weather information for a given city using the OpenWeatherMap API.
 
-This Python script retrieves weather data using the OpenWeatherMap API based on user input for the API key and city name. It provides information such as the current weather, temperature, pressure, humidity, and wind details.
-
-## Prerequisites
-
-Before running the script, make sure you have the following:
-
-- Python installed on your machine
-- pandas library installed (you can install it using pip install pandas)
-- An OpenWeatherMap API key. If you don't have one, you can sign up for free at OpenWeatherMap and obtain an API key.
-## Usage
-
-- Clone or download the script to your local machine.
-- Open a terminal or command prompt and navigate to the directory where the script is located.
-- Run the script using the command 
-```py
-python3 main.py
+## Installation
+Clone the repository to your local machine using the following command:
 ```
-- You will be prompted to enter your OpenWeatherMap API key. Provide the key and press Enter.
-- Next, enter the name of the city for which you want to retrieve weather data and press Enter.
-- Choose the type of forecast you want to receive by entering the corresponding number and pressing Enter:
-  - 1: Current Weather Data
-  - 2: Hourly Forecast for 4 Days
-  - 3: Daily Forecast for 16 Days
-  - 4: Climatic Forecast for 30 Days
-- The script will fetch the weather data and display it on the console.
+git clone https://github.com/swoyam2609/Github-CoPilot-Hackathon/git
+```
 
-Note: The script uses the requests library to make API requests and the pandas library for data manipulation. Make sure you have these libraries installed.
+Install the required dependencies by running the following command:
+```
+pip install requests
+```
 
-Feel free to modify the script according to your needs or integrate it into your projects.
+Sign up for an API key on the [OpenWeatherMap](https://openweathermap.org/) website and copy the API key.
 
-If you have any questions or encounter any issues, please let me know.
+Usage
+Open the `main.py` file in your preferred Python IDE or text editor.
+
+Replace the placeholder A`PI_KEY` in the code with your actual OpenWeatherMap API key.
+
+Run the script and enter the name of the city for which you want to retrieve the weather information.
+
+The script will display the current weather, temperature, minimum and maximum temperature, feels-like temperature, air pressure, humidity, wind speed, and wind direction for the specified city.
+
+Example
+Here's an example usage of the Weather App:
+
+```vbnet
+Enter the name of the city: New York
+
+The current weather in New York is: Clouds
+The current temperature is: 23.5°C
+The temperature feels like: 26.8°C
+The minimum temperature of the day is expected to be: 20.5°C
+The maximum temperature of the day is expected to be: 25.7°C
+The air pressure in New York is: 1012 hPa
+The humidity in New York is: 70%
+The wind speed in New York is: 5.2 m/s
+The wind direction in New York is: NW
+```
+
+## Contributing
+If you would like to contribute to this project, you can follow these steps:
+
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Make your changes and commit them with descriptive commit messages.
+- Push your changes to your forked repository.
+- Submit a pull request, explaining your changes and why they should be merged.
+
+## License
+This project is licensed under the MIT License.
+
+Acknowledgments
+OpenWeatherMap for providing the weather data API.
+Feel free to customize this README file according to your project's specific details and requirements.
